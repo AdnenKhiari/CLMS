@@ -1,0 +1,185 @@
+*{
+  padding: 0;
+  margin: 0;
+  outline: none;
+  box-sizing: border-box;
+}
+nav{
+  padding: 0;
+  margin: 0;
+}
+nav ul{
+  list-style: none;
+}
+.leftNav ul,.topNav ul{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: flex-start;
+  padding: 10px;
+  min-height: 100vh;
+  background: black;
+  padding: 0;
+  margin: 0;
+}
+label{
+  padding: 5px;
+  margin: 3px;
+}
+button{
+  padding: 15px 30px;
+  background-color: crimson;
+  font-size: 1.2rem;
+  border: 1px solid black;
+  color: black;
+}
+.subgrid{
+  padding: 15px;
+}
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  padding: 15px;
+}
+form .formFields{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: center;
+}
+form label{
+  display: block;
+}
+form .buttons{
+  padding-top: 10px;
+}
+.topNav ul{
+  flex-direction: row;
+  background: transparent;
+  align-items: center;
+  min-height: 100px;
+}
+.leftNav ul li,.topNav ul li{
+  width: 100%;
+  padding: 15px 10px;
+  font-size: 1.2rem;
+  margin: 1px 0px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  background: crimson;
+  cursor: pointer;
+}
+.topNav ul li{
+  background-color: transparent;
+  width: max-content;
+  margin-left: 10px;
+  font-weight: bold;
+  justify-self: center;
+  color: crimson;
+}
+.profileForm{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  
+}
+ input, select{
+  min-width: 250px;
+  min-height: 40px;
+  padding: 10px;
+  padding-left: 15px;
+  margin: 3px;
+}
+header{
+  display: flex;
+  flex-direction: start;
+  justify-content: space-between;
+  padding: 10px 15px;
+  background-color: black;
+  height: 100px;
+  align-items: center;
+  align-content: center;
+}
+header p {
+  color: crimson;
+  font-size: 2rem;
+}
+.leftNav ul li a,.topNav ul li a{
+  font-weight: bold;
+  color: white;
+  width: 100%;
+}
+.topNav ul li a{
+}
+.danger{
+  color: red;
+  font-weight: bold;
+}
+div{
+  padding: 0px;
+  margin: 0px;
+}
+.input_fields{
+
+}
+body{
+  margin: 0;
+  padding: 0;
+  font-size: 17px;
+  letter-spacing: 0.04rem;
+}
+
+a,a:hover{
+  text-decoration: none;
+  color:#dc143c;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+a:hover{
+  font-weight: bold;
+  text-decoration: underline;
+}
+hr{
+  padding: 2px;
+  background-color: gray;
+  border: none;
+}
+ul{
+  list-style: none;
+}
+li{
+  margin: 0px;
+}
+h1,h2,h3,h4,h5,h6{
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color: crimson;
+}
+h1{
+  font-size: 4.5rem;
+}
+h2{
+  font-size: 3.25rem;
+}
+h3{
+  font-size: 2rem;
+}
+h4{
+  font-size: 1.25rem;
+}
+h5{
+  font-size: 0.7rem;
+}
+h6{
+  font-size: 0.25rem;
+}
+label{
+  font-size: 1.2rem;
+}
+
+.maingrid{
+  display: grid;
+  grid-template-columns: 1fr 6fr;
+}

@@ -1,0 +1,3 @@
+insert into Users (first_name,last_name,birth_date,gender,adresse,email,password,salary,grade) VALUES ("adnen","khiari","2001-10-06","M","74 ibn jazzar manouba","director@gmail.com","director","1800","D");
+insert into Users (first_name,last_name,birth_date,gender,adresse,email,password,salary,grade) VALUES ("Aymen","Khiari","1999-10-06","M","72 ibn jazzar manouba","chief@gmail.com","chief","1450","C");
+insert into Users (first_name,last_name,birth_date,gender,adresse,email,password,salary,grade) VALUES ("Douja","Khiari","2006-08-06","F","74 ibn jazzar manouba","agent@gmail.com","agent","850","A");

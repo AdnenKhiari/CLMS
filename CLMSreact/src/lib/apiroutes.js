@@ -1,0 +1,5 @@
+export const BOOKS = "/api/books" 
+export const PING = "/api/"
+export const USERS = "/api/users"
+export const TRANSACTIONS = "/api/transaction"
+export const BORROWS = "/api/borrows"
