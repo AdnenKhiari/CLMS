@@ -1,3 +1,4 @@
+export const BOOK_SEARCH ="/booksearch"
 export const BOOK_ADD ="/bookadd"
 export const BOOK_DEL ="/bookdel"
 export const BOOK_MOD ="/bookmod"

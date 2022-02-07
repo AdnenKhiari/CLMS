@@ -1,29 +1,25 @@
 
-//Example
- const testData = {
-    name: "Table Name",
-    header : ["field1","field2","field3","field4"],
-    body : [[{value: "value1"},{value: "value2"},{value: "value3"},{value: "value4"}],
-    [{value: "value1"},{value: "value2"},{value: "value3"},{value: "value4"}],
-    [{value: "value1"},{value: "value2"},{value: "value3"},{value: "value4"}],
-    [{value: "value1",span: 2},{value: "value3"},{value: "value4"}],
-    [{value: "value1"},{value: "value2"},{value: "value3"},{value: "value4"}],
-    [{value: "value1",span: 4}]]
-  }
  /***
  * display data as a table/list
- * Require : data with header name and body a list of list 
- * containing objects with the form {value,span}
+ * Require : data with header name and body a list of entires from sql
  * **/
 const AList = ({data})=>{
-    return <div>
+    return <div className="table-container">
         <table>
-            {data.name && <thead>{data.name}</thead>}
+            <thead>
+                <tr>
+                {data.body && Object.keys(data.body[0]).map(key=><th key={key}>{key}</th>)}
+                </tr>
+            </thead>
             <tbody>
-                {data.body && data.body.map((rowvalues,r)=><tr key={r}>
-                    {rowvalues && rowvalues.map((value,d)=><td key={+d} colSpan={value.span}>
-                        {value.value}
-                    </td>)}
+                {data.body && data.body.map((rowvalues,r)=><tr key={rowvalues.ID}>
+                    {rowvalues && Object.keys(rowvalues).map(key=>rowvalues[key]).map((value,d)=>{
+                    if(value)
+                        return <td key={100+d}>
+                            {value}
+                        </td>
+                    return <td key={100+d}>null</td>
+                    })}
                 </tr>) }
             </tbody>
         </table>

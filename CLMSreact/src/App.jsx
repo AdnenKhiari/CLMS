@@ -13,6 +13,9 @@ import {
   useRouteMatch
 } from "react-router-dom";
 import BookAdd from './pages/bookadd';
+import BookSearch from './pages/booksearch';
+import BookDelete from './pages/bookdel';
+import BookMod from './pages/bookmod';
 import Profile from './pages/Profile';
 
 function App() {
@@ -26,7 +29,10 @@ function App() {
             <div className='subgrid'>
               <Routes>
                 <Route path={ROUTES.BOOK_ADD} element={<BookAdd/>} />
+                <Route path={ROUTES.BOOK_SEARCH} element={<BookSearch/>} />
+                <Route path={ROUTES.BOOK_MOD} element={<BookMod/>} />
                 <Route path={ROUTES.PROFILE} element={<Profile/>} />
+                <Route path={ROUTES.BOOK_DEL} element={<BookDelete/>} />
               </Routes>
             </div>
           </div>

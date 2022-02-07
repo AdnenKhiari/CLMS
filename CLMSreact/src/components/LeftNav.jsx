@@ -4,6 +4,7 @@ const LeftNav = ()=>{
     return <nav className="leftNav">
         <ul>
             <li><Link to={ROUTES.BOOK_ADD}>Add a book</Link></li>
+            <li><Link to={ROUTES.BOOK_SEARCH}>Search for a book</Link></li>
             <li><Link to={ROUTES.BOOK_DEL}>Delete a book</Link></li>
             <li><Link to={ROUTES.BOOK_MOD}>Modify a book</Link></li>
             <br/>

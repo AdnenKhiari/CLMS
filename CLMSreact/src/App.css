@@ -183,3 +183,26 @@ label{
   display: grid;
   grid-template-columns: 1fr 6fr;
 }
+.table-container{
+  max-height: 75vh;
+  overflow-y: scroll;
+}
+table{
+  padding: 15px;
+  width: 100%;
+}
+table thead{
+  position: sticky;
+  width: 100%;
+  color: crimson;
+  font-size: 1.5rem;
+  padding: 15px;
+}
+table tr{
+  margin: 2px 0px;
+  width: 100%;
+}
+table tr td{
+  padding: 10px;
+  min-width: 100px;
+}
