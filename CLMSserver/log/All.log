@@ -1,0 +1,287 @@
+[info]:03-02/14:09:45:    Im listening at port 4000
+[info]:03-02/14:09:45:    Redis Connected 
+[info]:03-02/14:10:45:    Im listening at port 4000
+[info]:03-02/14:10:45:    Redis Connected 
+[info]:03-02/17:19:08:    Im listening at port 4000
+[error]:03-02/17:19:08:   Redis connection to localhost:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+[error]:03-02/17:19:08:   Redis connection to localhost:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+[error]:03-02/17:19:08:   Redis connection to localhost:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+[error]:03-02/17:19:09:   Redis connection to localhost:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+[error]:03-02/17:19:10:   Redis connection to localhost:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+[error]:03-02/17:19:11:   Redis connection to localhost:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+[error]:03-02/17:19:14:   Redis connection to localhost:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+[error]:03-02/17:19:19:   Redis connection to localhost:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+[error]:03-02/17:19:27:   Redis connection to localhost:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+[error]:03-02/17:19:41:   Redis connection to localhost:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+[info]:03-02/17:20:04:    Im listening at port 4000
+[info]:03-02/17:20:04:    Redis Connected 
+[info]:03-02/17:23:59:    Im listening at port 4000
+[info]:03-02/17:23:59:    Redis Connected 
+[info]:03-02/17:25:29:    Im listening at port 4000
+[info]:03-02/17:25:29:    Redis Connected 
+[info]:03-02/17:34:02:    Im listening at port 4000
+[info]:03-02/17:34:02:    Redis Connected 
+[info]:03-02/17:34:04:    Im listening at port 4000
+[info]:03-02/17:34:04:    Redis Connected 
+[info]:03-02/17:34:28:    Im listening at port 4000
+[info]:03-02/17:34:28:    Redis Connected 
+[info]:03-02/17:35:29:    Im listening at port 4000
+[info]:03-02/17:35:29:    Redis Connected 
+[info]:03-02/17:36:58:    Im listening at port 4000
+[info]:03-02/17:36:58:    Redis Connected 
+[info]:03-02/17:37:25:    Im listening at port 4000
+[info]:03-02/17:37:25:    Redis Connected 
+[info]:03-02/17:37:41:    Im listening at port 4000
+[info]:03-02/17:37:41:    Redis Connected 
+[info]:03-02/17:38:03:    Im listening at port 4000
+[info]:03-02/17:38:03:    Redis Connected 
+[info]:03-02/17:38:44:    Im listening at port 4000
+[info]:03-02/17:38:44:    Redis Connected 
+[info]:03-02/17:40:50:    Im listening at port 4000
+[info]:03-02/17:40:50:    Redis Connected 
+[info]:03-02/17:41:23:    Im listening at port 4000
+[info]:03-02/17:41:23:    Redis Connected 
+[info]:03-02/17:47:20:    Im listening at port 4000
+[info]:03-02/17:47:20:    Redis Connected 
+[info]:03-02/19:01:32:    Im listening at port 4000
+[info]:03-02/19:01:32:    Redis Connected 
+[info]:03-02/19:01:54:    Im listening at port 4000
+[info]:03-02/19:01:54:    Redis Connected 
+[info]:03-02/19:01:57:    Im listening at port 4000
+[info]:03-02/19:01:57:    Redis Connected 
+[info]:03-02/19:04:17:    Im listening at port 4000
+[info]:03-02/19:04:17:    Redis Connected 
+[info]:03-02/19:05:28:    Im listening at port 4000
+[info]:03-02/19:05:28:    Redis Connected 
+[info]:03-02/19:05:46:    Im listening at port 4000
+[info]:03-02/19:05:46:    Redis Connected 
+[debug]:03-02/19:05:48:   [object Object]
+[info]:03-02/19:06:04:    Im listening at port 4000
+[info]:03-02/19:06:04:    Redis Connected 
+[info]:03-02/19:09:15:    Im listening at port 4000
+[info]:03-02/19:09:15:    Redis Connected 
+[info]:03-02/19:11:36:    Im listening at port 4000
+[info]:03-02/19:11:36:    Redis Connected 
+[error]:03-02/19:11:40:   Duplicate entry '99-7' for key 'books.ISBN'
+[info]:03-02/19:11:58:    Im listening at port 4000
+[info]:03-02/19:11:58:    Redis Connected 
+[error]:03-02/19:12:00:   Duplicate entry '99-7' for key 'books.ISBN'
+[info]:03-02/19:12:25:    Im listening at port 4000
+[info]:03-02/19:12:25:    Redis Connected 
+[error]:03-02/19:12:28:   Duplicate entry '99-7' for key 'books.ISBN'
+[info]:03-02/19:16:57:    Im listening at port 4000
+[info]:03-02/19:16:57:    Redis Connected 
+[error]:03-02/20:11:35:   Duplicate entry 'd' for key 'books.ISBN'
+[error]:03-02/20:11:59:   Duplicate entry 'h' for key 'books.ISBN'
+[error]:03-02/20:13:38:   Duplicate entry 'd' for key 'books.ISBN'
+[info]:03-02/20:14:07:    Im listening at port 4000
+[info]:03-02/20:14:07:    Redis Connected 
+[error]:03-02/20:17:32:   Duplicate entry 'h' for key 'books.ISBN'
+[error]:03-02/20:18:23:   Duplicate entry 'h' for key 'books.ISBN'
+[error]:03-02/20:19:16:   Duplicate entry 'h' for key 'books.ISBN'
+[error]:03-02/20:19:21:   Duplicate entry 'h' for key 'books.ISBN'
+[error]:03-02/20:19:39:   Duplicate entry 'h' for key 'books.ISBN'
+[error]:03-02/20:20:12:   Duplicate entry 'h' for key 'books.ISBN'
+[info]:05-02/10:52:45:    Im listening at port 4000
+[error]:05-02/10:52:45:   Redis connection to localhost:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+[error]:05-02/10:52:46:   Redis connection to localhost:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+[error]:05-02/10:52:46:   Redis connection to localhost:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+[error]:05-02/10:52:47:   Redis connection to localhost:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+[error]:05-02/10:52:48:   Redis connection to localhost:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+[error]:05-02/10:52:49:   Redis connection to localhost:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+[error]:05-02/10:52:52:   Redis connection to localhost:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+[error]:05-02/10:52:57:   Redis connection to localhost:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+[error]:05-02/10:53:05:   Redis connection to localhost:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+[error]:05-02/10:53:19:   Redis connection to localhost:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+[error]:05-02/10:53:43:   Redis connection to localhost:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+[error]:05-02/10:54:23:   Redis connection to localhost:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+[error]:05-02/10:55:32:   Redis connection to localhost:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+[error]:05-02/10:57:28:   Redis connection to localhost:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+[info]:05-02/10:57:50:    Im listening at port 4000
+[error]:05-02/10:57:50:   Redis connection to localhost:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+[error]:05-02/10:57:50:   Redis connection to localhost:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+[error]:05-02/10:57:50:   Redis connection to localhost:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+[error]:05-02/10:57:51:   Redis connection to localhost:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+[error]:05-02/10:57:52:   Redis connection to localhost:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+[error]:05-02/10:57:54:   Redis connection to localhost:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+[error]:05-02/10:57:56:   Redis connection to localhost:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+[error]:05-02/10:58:01:   Redis connection to localhost:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+[error]:05-02/10:58:09:   Redis connection to localhost:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+[error]:05-02/10:58:23:   Redis connection to localhost:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+[info]:05-02/10:58:40:    Im listening at port 4000
+[error]:05-02/10:58:40:   Redis connection to localhost:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+[error]:05-02/10:58:41:   Redis connection to localhost:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+[error]:05-02/10:58:41:   Redis connection to localhost:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+[error]:05-02/10:58:42:   Redis connection to localhost:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+[error]:05-02/10:58:43:   Redis connection to localhost:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+[info]:05-02/10:58:45:    Im listening at port 4000
+[error]:05-02/10:58:45:   Redis connection to localhost:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+[error]:05-02/10:58:45:   Redis connection to localhost:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+[error]:05-02/10:58:45:   Redis connection to localhost:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+[error]:05-02/10:58:46:   Redis connection to localhost:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+[error]:05-02/10:58:47:   Redis connection to localhost:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+[error]:05-02/10:58:48:   Redis connection to localhost:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+[error]:05-02/10:58:51:   Redis connection to localhost:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+[error]:05-02/10:58:56:   Redis connection to localhost:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+[error]:05-02/10:59:04:   Redis connection to localhost:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+[error]:05-02/10:59:18:   Redis connection to localhost:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+[info]:05-02/10:59:25:    Im listening at port 4000
+[error]:05-02/10:59:25:   Redis connection to localhost:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+[error]:05-02/10:59:25:   Redis connection to localhost:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+[error]:05-02/10:59:26:   Redis connection to localhost:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+[error]:05-02/10:59:26:   Redis connection to localhost:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+[error]:05-02/10:59:27:   Redis connection to localhost:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+[info]:05-02/10:59:29:    Im listening at port 4000
+[error]:05-02/10:59:29:   Redis connection to localhost:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+[error]:05-02/10:59:29:   Redis connection to localhost:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+[error]:05-02/10:59:29:   Redis connection to localhost:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+[error]:05-02/10:59:30:   Redis connection to localhost:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+[error]:05-02/10:59:31:   Redis connection to localhost:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+[error]:05-02/10:59:33:   Redis connection to localhost:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+[error]:05-02/10:59:36:   Redis connection to localhost:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+[error]:05-02/10:59:40:   Redis connection to localhost:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+[error]:05-02/10:59:49:   Redis connection to localhost:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+[error]:05-02/11:00:03:   Redis connection to localhost:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+[error]:05-02/11:00:26:   Redis connection to localhost:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+[info]:05-02/11:01:07:    Redis Connected 
+[info]:05-02/11:04:41:    Im listening at port 4000
+[info]:05-02/11:04:41:    Redis Connected 
+[info]:05-02/11:04:49:    Im listening at port 4000
+[info]:05-02/11:04:49:    Redis Connected 
+[info]:05-02/11:05:19:    Im listening at port 4000
+[info]:05-02/11:05:19:    Redis Connected 
+[info]:05-02/11:05:45:    Im listening at port 4000
+[info]:05-02/11:05:45:    Redis Connected 
+[info]:05-02/11:06:02:    Im listening at port 4000
+[info]:05-02/11:06:02:    Redis Connected 
+[info]:05-02/11:06:15:    Im listening at port 4000
+[info]:05-02/11:06:15:    Redis Connected 
+[info]:05-02/11:06:25:    Im listening at port 4000
+[info]:05-02/11:06:25:    Redis Connected 
+[info]:05-02/11:06:54:    Im listening at port 4000
+[info]:05-02/11:06:54:    Redis Connected 
+[info]:05-02/11:07:08:    Im listening at port 4000
+[info]:05-02/11:07:08:    Redis Connected 
+[info]:05-02/11:07:20:    Im listening at port 4000
+[info]:05-02/11:07:20:    Redis Connected 
+[info]:05-02/11:07:56:    Im listening at port 4000
+[info]:05-02/11:07:56:    Redis Connected 
+[info]:05-02/11:27:19:    Im listening at port 4000
+[info]:05-02/11:27:19:    Redis Connected 
+[info]:05-02/11:27:32:    Im listening at port 4000
+[info]:05-02/11:27:32:    Redis Connected 
+[info]:05-02/11:27:45:    Im listening at port 4000
+[info]:05-02/11:27:45:    Redis Connected 
+[info]:05-02/11:28:02:    Im listening at port 4000
+[info]:05-02/11:28:02:    Redis Connected 
+[info]:05-02/11:28:33:    Im listening at port 4000
+[info]:05-02/11:28:33:    Redis Connected 
+[info]:05-02/11:29:06:    Im listening at port 4000
+[info]:05-02/11:29:06:    Redis Connected 
+[info]:05-02/11:29:31:    Im listening at port 4000
+[info]:05-02/11:29:31:    Redis Connected 
+[info]:05-02/11:30:13:    Im listening at port 4000
+[info]:05-02/11:30:13:    Redis Connected 
+[info]:05-02/11:32:56:    Im listening at port 4000
+[info]:05-02/11:32:56:    Redis Connected 
+[info]:05-02/11:33:28:    Im listening at port 4000
+[info]:05-02/11:33:28:    Redis Connected 
+[info]:05-02/11:33:40:    Im listening at port 4000
+[info]:05-02/11:33:40:    Redis Connected 
+[info]:05-02/11:33:44:    Im listening at port 4000
+[info]:05-02/11:33:44:    Redis Connected 
+[info]:05-02/11:33:53:    Im listening at port 4000
+[info]:05-02/11:33:53:    Redis Connected 
+[info]:05-02/11:53:21:    Im listening at port 4000
+[info]:05-02/11:53:21:    Redis Connected 
+[error]:05-02/12:06:58:   Unexpected token " in JSON at position 0
+[info]:05-02/12:12:05:    Im listening at port 4000
+[info]:05-02/12:12:05:    Redis Connected 
+[info]:05-02/12:14:28:    Im listening at port 4000
+[info]:05-02/12:14:28:    Redis Connected 
+[info]:05-02/12:15:40:    Im listening at port 4000
+[info]:05-02/12:15:40:    Redis Connected 
+[info]:05-02/12:15:49:    Im listening at port 4000
+[info]:05-02/12:15:49:    Redis Connected 
+[info]:05-02/12:16:57:    Im listening at port 4000
+[info]:05-02/12:16:57:    Redis Connected 
+[info]:05-02/12:17:01:    Im listening at port 4000
+[info]:05-02/12:17:01:    Redis Connected 
+[info]:05-02/12:17:10:    Im listening at port 4000
+[info]:05-02/12:17:10:    Redis Connected 
+[error]:05-02/12:17:11:   You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '%''%' at line 1
+[error]:05-02/12:17:13:   You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '%''%' at line 1
+[info]:05-02/12:17:16:    Im listening at port 4000
+[info]:05-02/12:17:16:    Redis Connected 
+[error]:05-02/12:17:19:   You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '%' at line 1
+[info]:05-02/12:17:26:    Im listening at port 4000
+[info]:05-02/12:17:26:    Redis Connected 
+[error]:05-02/12:17:31:   You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'wofl''' at line 1
+[error]:05-02/12:17:34:   You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'wolf''' at line 1
+[error]:05-02/12:17:36:   You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'kk''' at line 1
+[info]:05-02/12:17:40:    Im listening at port 4000
+[info]:05-02/12:17:40:    Redis Connected 
+[info]:05-02/12:18:19:    Im listening at port 4000
+[info]:05-02/12:18:19:    Redis Connected 
+[error]:05-02/12:18:19:   You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '%' at line 1
+[error]:05-02/12:18:21:   You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '%' at line 1
+[info]:05-02/12:18:26:    Im listening at port 4000
+[info]:05-02/12:18:26:    Redis Connected 
+[error]:05-02/12:18:27:   You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '%K' at line 1
+[info]:05-02/12:18:33:    Im listening at port 4000
+[info]:05-02/12:18:33:    Redis Connected 
+[info]:05-02/12:18:38:    Im listening at port 4000
+[info]:05-02/12:18:38:    Redis Connected 
+[error]:05-02/12:18:44:   You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ad''' at line 1
+[error]:05-02/12:18:46:   You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'k''' at line 1
+[error]:05-02/12:18:46:   You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'k''' at line 1
+[info]:05-02/12:19:03:    Im listening at port 4000
+[info]:05-02/12:19:03:    Redis Connected 
+[info]:05-02/12:29:01:    Im listening at port 4000
+[info]:05-02/12:29:01:    Redis Connected 
+[info]:05-02/13:39:00:    Im listening at port 4000
+[info]:05-02/13:39:00:    Redis Connected 
+[info]:05-02/15:18:28:    Im listening at port 4000
+[info]:05-02/15:18:28:    Redis Connected 
+[info]:05-02/15:25:24:    Im listening at port 4000
+[info]:05-02/15:25:24:    Redis Connected 
+[info]:05-02/15:25:32:    Im listening at port 4000
+[info]:05-02/15:25:32:    Redis Connected 
+[error]:05-02/15:25:35:   You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '%%''' at line 1
+[info]:05-02/15:25:40:    Im listening at port 4000
+[info]:05-02/15:25:40:    Redis Connected 
+[info]:05-02/15:26:27:    Im listening at port 4000
+[info]:05-02/15:26:27:    Redis Connected 
+[info]:05-02/15:26:36:    Im listening at port 4000
+[info]:05-02/15:26:36:    Redis Connected 
+[info]:05-02/15:27:33:    Im listening at port 4000
+[info]:05-02/15:27:33:    Redis Connected 
+[info]:05-02/15:28:07:    Im listening at port 4000
+[info]:05-02/15:28:07:    Redis Connected 
+[info]:05-02/15:28:16:    Im listening at port 4000
+[info]:05-02/15:28:16:    Redis Connected 
+[info]:05-02/15:29:33:    Im listening at port 4000
+[info]:05-02/15:29:33:    Redis Connected 
+[info]:05-02/15:46:38:    Im listening at port 4000
+[info]:05-02/15:46:38:    Redis Connected 
+[error]:05-02/15:46:42:   Incorrect DATE value: ''
+[info]:05-02/15:47:02:    Im listening at port 4000
+[info]:05-02/15:47:02:    Redis Connected 
+[info]:05-02/15:48:19:    Im listening at port 4000
+[info]:05-02/15:48:19:    Redis Connected 
+[info]:05-02/15:48:35:    Im listening at port 4000
+[info]:05-02/15:48:35:    Redis Connected 
+[info]:05-02/15:48:40:    Im listening at port 4000
+[info]:05-02/15:48:40:    Redis Connected 
+[info]:05-02/15:48:44:    Im listening at port 4000
+[info]:05-02/15:48:44:    Redis Connected 
+[info]:05-02/15:52:52:    Im listening at port 4000
+[info]:05-02/15:52:52:    Redis Connected 
+[info]:05-02/15:53:14:    Im listening at port 4000
+[info]:05-02/15:53:14:    Redis Connected 
+[info]:05-02/15:53:25:    Im listening at port 4000
+[info]:05-02/15:53:25:    Redis Connected 
+[info]:05-02/15:53:49:    Im listening at port 4000
+[info]:05-02/15:53:49:    Redis Connected 
+[info]:05-02/15:54:06:    Im listening at port 4000
+[info]:05-02/15:54:06:    Redis Connected 
