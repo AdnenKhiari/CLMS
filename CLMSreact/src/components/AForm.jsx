@@ -1,8 +1,10 @@
 import { useForm } from "react-hook-form";
 
-
+import * as yup from "yup"
+import {yupResolver } from "@hookform/resolvers/yup"
+import { useEffect, useState } from "react";
 //exazmple :
-const allfields = {
+const example = {
     Submit:(data)=>{
       console.log(data)
     },
@@ -11,9 +13,6 @@ const allfields = {
         label: "First Name",
         name: "first_name",
         type: "text",
-        options : {
-          required: true
-        }
       },
       {
         label: "Last Name",
@@ -25,7 +24,10 @@ const allfields = {
         name: "age",
         type: "number"
       }
-    ]
+    ],
+    schema : yup.object({
+      first_name : yup.string().required("Field is required")
+    })
   }
 /***
  * Create a form requires allfields object with Submit function and fields array with objects having:
@@ -35,23 +37,53 @@ const allfields = {
  * options : data validation;
  ***/
 const AForm = ({allfields})=>{
-  // bug of reset files
-    const { register,formState: { errors }, handleSubmit  } = useForm();
+    const [nullValues,setNullValues] = useState([])
+    const updateNullValues = (i)=>{
+      nullValues[i] = !nullValues[i]
+      setNullValues(nullValues)
+    }
+    useEffect(()=>{
+      setNullValues(Object.keys(allfields).map(key => false))
+    },[])
+
+    const { register,unregister, formState: { errors }, handleSubmit ,reset } = useForm({
+      resolver : yupResolver(allfields.schema)
+    });
+
+    const SubmitFunction = handleSubmit((data)=>{
+      console.log("Trying to handle submit with data : ",data,"and fields : ",allfields.fields)
+      //make sure to make null = "" unless nullable is speciifed
+         allfields.fields.forEach((item,index)=>{
+         if(item.nullable && nullValues[index])
+           data[item.name] = null
+         else if(data[item.name] == null){
+           data[item.name] = ""
+         }
+      })
+      //console.log("NEW DATA AFTER PURIFICATION ",data)
+      return allfields.Submit(data)
+     })
+     console.log(errors)
     return <div>
-       <form onSubmit={handleSubmit(allfields.Submit)}>
+       <form onSubmit={SubmitFunction}
+        onReset={()=>reset({
+           keepValues: false
+        })}>
+          
           <div className="formFields">
           {allfields.fields.map((data,id)=> <div key={id} className="input_fields">
           {data.label && <label htmlFor={data.name}>{data.label}</label>}
-          <input type={data.type || "text" } {...register(data.name,data.options || {})} />
-          {errors[data.name] && <p className="danger">{data.name + " is " + errors[data.name].type}</p>}
+          <input disabled={nullValues[id]} className={errors[data.name] ? "invalid-input" : ""} type={data.type || "text" } {...register(data.name)} />
+          {data.nullable && <img className="nullable" onClick={()=>{updateNullValues(id);unregister(data.name)}} src="empty.png" alt="" />}
+          {errors[data.name] && <p className="danger">{data.label + " : " + errors[data.name].message}</p>}
           </div>)}
           </div>
-
           <div className="buttons">
-            <button type="submit">Submit</button>
-            <button type="reset">Reset</button>
+            <button type="submit" >Submit</button>
+            <button type="reset" >Reset</button>
           </div>
     </form>
+
     </div>
 }
 

@@ -11,8 +11,9 @@ redisData
 
 # production
 **/build
-
+CLMS.code-workspace
 # misc
+.vscode
 .DS_Store
 .env.local
 .env.development.local

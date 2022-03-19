@@ -1,4 +1,5 @@
 const BOOKS = "/api/books" 
+const STUDENTS = "/api/students" 
 const PING = "/api/"
 const LOGIN = "/api/login"
 const USERS = "/api/users"
@@ -11,5 +12,6 @@ module.exports = {
     USERS,
     TRANSACTIONS,
     BORROWS,
-    LOGIN
+    LOGIN,
+    STUDENTS
 }

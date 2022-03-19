@@ -11,6 +11,11 @@ nav{
 nav ul{
   list-style: none;
 }
+.leftNav{
+  position: fixed;
+  top: 99px;
+  left: 0px;
+}
 .leftNav ul,.topNav ul{
   width: 100%;
   display: flex;
@@ -28,12 +33,16 @@ label{
   padding: 5px;
   margin: 3px;
 }
+.invalid-input{
+  border: 1px solid crimson;
+}
 button{
   padding: 15px 30px;
   background-color: crimson;
   font-size: 1.2rem;
   border: 1px solid black;
   color: black;
+  cursor: pointer;
 }
 .subgrid{
   padding: 15px;
@@ -50,7 +59,7 @@ form .formFields{
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: center;
   align-content: center;
 }
 form label{
@@ -58,6 +67,11 @@ form label{
 }
 form .buttons{
   padding-top: 10px;
+}
+header {
+  position: sticky;
+  top: 0px;
+
 }
 .topNav ul{
   flex-direction: row;
@@ -124,8 +138,19 @@ div{
   margin: 0px;
 }
 .input_fields{
-
+min-height: 120px;
 }
+.input_fields input{
+  
+}
+.input_fields .nullable{
+  height: 25px;
+  padding: 2px;
+  width: 25px;
+  vertical-align: middle;
+  cursor: pointer;
+} 
+
 body{
   margin: 0;
   padding: 0;
@@ -190,19 +215,24 @@ label{
 table{
   padding: 15px;
   width: 100%;
+  border-collapse: collapse;
 }
+
 table thead{
-  position: sticky;
   width: 100%;
   color: crimson;
   font-size: 1.5rem;
   padding: 15px;
 }
-table tr{
+table tr,table th{
   margin: 2px 0px;
-  width: 100%;
+  text-align: left;
+
 }
-table tr td{
+table tr td,table tr th{
   padding: 10px;
-  min-width: 100px;
+}
+table tr td img{
+  height: 150px;
+  width: 100%;
 }

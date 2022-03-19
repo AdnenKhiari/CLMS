@@ -1,5 +1,6 @@
 const SERVER_URI = "http://localhost:4000"
 export const BOOKS = SERVER_URI+"/api/books" 
+export const STUDENTS = SERVER_URI+"/api/students" 
 export const PING = SERVER_URI+"/api/"
 export const USERS = SERVER_URI+"/api/users"
 export const TRANSACTIONS = SERVER_URI+"/api/transaction"

@@ -1,10 +1,10 @@
+
 import React from "react"
 import * as ROUTES from "../lib/apiroutes"
 import * as Fetcher from "../lib/fetcher"
 import AList from "../components/AList"
 import AForm from "../components/AForm"
 import * as yup from "yup"
-import * as Joi from "joi"
 
 const allfields = (Submit = (data)=>console.log(data))=>{return {
   Submit : Submit,
@@ -51,14 +51,14 @@ const allfields = (Submit = (data)=>console.log(data))=>{return {
     first_name : yup.string().required("First Name is required").label("First Name"),
     last_name : yup.string().required("Last Name is required").label("Last Name"),
     gender : yup.string().required("Gender is required").oneOf(["M","F"]).label("Gender"),
-    address : yup.string().nullable().transform((cur,origin)=> origin === "" ? null : cur).label("Address").default(null),
+    address : yup.string().nullable().transform((cur,origin)=> origin === "" ? null : cur).label("Address"),
     email : yup.string().required("Email is required").email().label("Email"),
     password : yup.string().required("Password is required").label("Password"),
     birth_date : yup.date("Birth date is a Date Type").label("Birth Date"),
   })
 }
 }
-const StudentAdd = ()=>{
+const StudentSearch = ()=>{
   const {Submit,data ,error : err} = Fetcher.useFetch(ROUTES.STUDENTS,Fetcher.postData)
     return <>
       <h2>{"Add a Student"}</h2>
@@ -74,4 +74,4 @@ const StudentAdd = ()=>{
         }
     </>  
 }
-export default StudentAdd
+export default StudentSearch

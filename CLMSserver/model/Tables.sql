@@ -29,7 +29,7 @@ CREATE TABLE Books (
     author VARCHAR(30) NOT NULL,
     ISBN VARCHAR(13) UNIQUE NOT NULL,
     publication_date DATE,
-    cover_url VARCHAR(50)
+    cover_url VARCHAR(100)
 );
 CREATE TABLE Borrows(
     ID INT PRIMARY KEY AUTO_INCREMENT,
