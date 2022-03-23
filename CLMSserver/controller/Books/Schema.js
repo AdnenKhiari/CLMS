@@ -8,11 +8,11 @@ const BookGetSchema = {
     IDOnly:  Joi.object({
         ID: Joi.number().positive("ID should be positive").required("Missing Arguments: ID")
     }),
-    AllFields :  Joi.object({
+    AllFields : Joi.object({
         title : Joi.string().trim().allow("").exist().label("Title"),
         publisher: Joi.string().trim().allow("").default("").exist().label("Publisher"),
         author: Joi.string().trim().allow("").default("").exist().label("Author"),
-        ISBN: Joi.string().trim().custom(validate_isbn).allow("").default("").exist().label("ISBN"),
+        ISBN: Joi.string().trim().allow("").default("").exist().label("ISBN"),
         publication_date: Joi.date().allow("").default(null).label("Publication Date")
     })
 }
@@ -22,8 +22,8 @@ const BookInsertSchema = {
         publisher: Joi.string().trim().disallow("").exist().label("Publisher"),
         author: Joi.string().trim().disallow("").exist().label("Author"),
         ISBN: Joi.string().trim().custom(validate_isbn).disallow("").exist().label("ISBN"),
-        publication_date: Joi.date().disallow("").optional().default(null).label("Publication Date"),
-        cover_url: Joi.string().uri().trim().disallow("").optional().default(null).label("Cover Url")
+        publication_date: Joi.date().disallow("").allow(null).optional().default(null).label("Publication Date"),
+        cover_url: Joi.string().uri().allow(null).trim().disallow("").optional().default(null).label("Cover Url")
     })
 }
 const BookUpdateSchema = {

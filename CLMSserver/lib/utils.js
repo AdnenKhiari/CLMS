@@ -1,5 +1,6 @@
-const moment = require("moment")
+//const moment = require("moment")
 const format_data = (body)=>{
+    /*
     if(body != null){
         if(typeof body ==="string"){
             return body.trim().replaceAll("\\t","")
@@ -12,7 +13,8 @@ const format_data = (body)=>{
             return body
         }
     }
-    return null
+    return null*/
+    return body
 }
 
 module.exports = {

@@ -4,9 +4,26 @@ import * as ROUTES from "../lib/apiroutes"
 import * as Fetcher from "../lib/fetcher"
 import AList from "../components/AList"
 import AForm from "../components/AForm"
-import * as yup from "yup"
+import Joi from "joi"
+import ErrorDisplay from "../components/ErrorForm"
+
+
+
+const useIdField = (Submit = (data)=>console.log(data))=>{return {
+  Submit : Submit,
+  fields : [{
+    label: "ID",
+    name: "ID",
+    type: "number",
+  }],
+  schema :  Joi.object({
+    ID : Joi.number().positive().required().label("ID")
+  })
+}}
+
 
 const allfields = (Submit = (data)=>console.log(data))=>{return {
+
   Submit : Submit,
   fields : [
     {
@@ -39,39 +56,42 @@ const allfields = (Submit = (data)=>console.log(data))=>{return {
     {
       label: "Email",
       name: "email",
-      type: "email"
-    },
-    {
-      label: "Password",
-      name: "password",
-      type: "password"
+      type: "text"
     }
   ],
-  schema : yup.object({
-    first_name : yup.string().required("First Name is required").label("First Name"),
-    last_name : yup.string().required("Last Name is required").label("Last Name"),
-    gender : yup.string().required("Gender is required").oneOf(["M","F"]).label("Gender"),
-    address : yup.string().nullable().transform((cur,origin)=> origin === "" ? null : cur).label("Address"),
-    email : yup.string().required("Email is required").email().label("Email"),
-    password : yup.string().required("Password is required").label("Password"),
-    birth_date : yup.date("Birth date is a Date Type").label("Birth Date"),
-  })
+  schema : Joi.object({
+    first_name: Joi.string().required().allow("").trim().label("First Name"),
+    last_name: Joi.string().required().allow("").trim().label("Last Name"),
+    gender: Joi.string().trim().required().valid("M","F","").label("Gender"),
+    email : Joi.string().trim().allow("").required().label("Email"),
+    birth_date : Joi.date().allow("").required().label("BirthDate"),
+    grade: Joi.string().trim().required().valid("A","C","D","").label("Grade"),
+    salary : Joi.number().positive().required().allow("").label("Salary"),
+    address : Joi.string().trim().allow("").optional().label("Address").default(null).allow(null)
+ })
 }
 }
 const StudentSearch = ()=>{
-  const {Submit,data ,error : err} = Fetcher.useFetch(ROUTES.STUDENTS,Fetcher.postData)
+  const {Submit,data ,error : err} = Fetcher.useFetch(ROUTES.STUDENTS,Fetcher.getData)
+  const {Submit : Submit2,data : data2 ,error : err2} = Fetcher.useFetch(ROUTES.STUDENTS,Fetcher.getData)
     return <>
-      <h2>{"Add a Student"}</h2>
+      <h2>{"Search for a Student"}</h2>
       <AForm allfields={allfields(Submit)} />
       {data && err == null && <AList data={{
           name:"Result :",
           body : data
         }}/>}
-        {err != null && <div className="danger-container">
-          <p className="danger">{err.message}</p>
-           { err.details && err.details.length > 0 && err.details.map((dt,index)=><p key={index} className="danger">{dt}</p>)}
-        </div>
-        }
+
+
+      <AForm allfields={useIdField(Submit2)} />
+      {data2 && err2 == null && <AList data={{
+          name:"Search Results",
+          body : data2
+        }}/>}
+
+      <ErrorDisplay err={err} />
+
+      <ErrorDisplay err={err2} />
     </>  
 }
 export default StudentSearch

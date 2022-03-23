@@ -1,6 +1,15 @@
 const {StatusCodes} = require("http-status-codes")
 const {mysqlClient} = require("../lib/db")
 const ApiError = require("../errors/ApiError")
+
+const format_result = (data)=>{
+    return data.map((st)=>{
+        if(st.birth_date)
+            st.birth_date = new Date(st.birth_date).toLocaleDateString()
+        return st
+    })
+}
+
 //query all the users
 const getAllStudents = async (filter = {}) => new Promise((resolve,reject)=>{
     var FINAL_STATEMENT = null
@@ -31,11 +40,7 @@ const getAllStudents = async (filter = {}) => new Promise((resolve,reject)=>{
             return reject(new ApiError("Resource Not Found","Student with that ID Or Specs Not Found",StatusCodes.BAD_REQUEST))
         
             //return the result with formatting the dates
-        return resolve(result.map((st)=>{
-            if(st.birth_date)
-                st.birth_date = new Date(st.birth_date).toLocaleDateString()
-            return st
-        } ))
+        return resolve(format_result(result))
     })
 })
 
@@ -73,18 +78,14 @@ const deleteAStudent = async (data) => new Promise((resolve,reject)=>{
         if(err)
             return reject(err)
         if(!old_data || old_data.length === 0)
-            return reject(new ApiError("Resource Could not be updated","No Student was found with that ID",StatusCodes.BAD_REQUEST,"Make sure to have a valid inputs , if the problem persists , contact the administrator"))
+            return reject(new ApiError("Resource Could not be updated","No Student was found with that ID",StatusCodes.UNPROCESSABLE_ENTITY,"Make sure to have a valid inputs , if the problem persists , contact the administrator"))
   
         mysqlClient.query(STATEMENT,params,(error,result,info)=>{
             if(error)
                 return reject(error)
             if(!result || result.affectedRows === 0)
                 return reject(new ApiError("Resource Could not be updated","No Student was deleted",StatusCodes.INTERNAL_SERVER_ERROR,"Make sure to have a valid inputs , if the problem persists , contact the administrator"))
-            return resolve(old_data.map((st)=>{
-                if(st.birth_date)
-                    st.birth_date = new Date(st.birth_date).toLocaleDateString()
-                return st
-            }))
+            return resolve(format_result(old_data))
         })
     })
 })
@@ -96,7 +97,7 @@ const patchAStudent =  async (data) => new Promise((resolve,reject)=>{
         if(err)
             return reject(err)
         if(!old_data || old_data.length === 0)
-            return reject(new ApiError("Resource Could not be updated","No Student was found with that ID",StatusCodes.BAD_REQUEST,"Make sure to have a valid inputs , if the problem persists , contact the administrator"))   
+            return reject(new ApiError("Resource Could not be updated","No Student was found with that ID",StatusCodes.UNPROCESSABLE_ENTITY,"Make sure to have a valid inputs , if the problem persists , contact the administrator"))   
         
         //Process Data for patching 
         Object.keys(data).forEach((key)=>{
@@ -123,7 +124,7 @@ const patchAStudent =  async (data) => new Promise((resolve,reject)=>{
                 new_data.password="Password Not Updated"
                 old_data.password="Password Not Updated"
             }
-            return resolve([old_data,new_data] )  
+            return resolve(format_result([old_data,new_data]) )  
         })
     })
 })
@@ -134,7 +135,7 @@ const ValidateInsertStudent = async (data) => new Promise((resolve,reject)=>{
         if(error)
             return reject(error)
         if(!result || result.length != 0)
-            return reject(new ApiError("Resource Could not be added","Email already used",StatusCodes.BAD_REQUEST,"Make sure to have a non used email , if there is  problem or the email have been used without your consent , contact the administrator"))   
+            return reject(new ApiError("Resource Could not be added","Email already used",StatusCodes.UNPROCESSABLE_ENTITY,"Make sure to have a non used email , if there is  problem or the email have been used without your consent , contact the administrator"))   
         return resolve(null)
     })
 })

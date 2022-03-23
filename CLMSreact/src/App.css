@@ -16,6 +16,10 @@ nav ul{
   top: 99px;
   left: 0px;
 }
+.leftNav ul{
+  height: 90vh;
+  overflow-y: scroll;
+}
 .leftNav ul,.topNav ul{
   width: 100%;
   display: flex;
@@ -24,7 +28,6 @@ nav ul{
   align-items: flex-start;
   align-content: flex-start;
   padding: 10px;
-  min-height: 100vh;
   background: black;
   padding: 0;
   margin: 0;
@@ -58,6 +61,7 @@ form {
 form .formFields{
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: flex-start;
   align-items: center;
   align-content: center;

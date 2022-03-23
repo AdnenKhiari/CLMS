@@ -3,7 +3,10 @@ import * as ROUTES from "../lib/apiroutes"
 import * as Fetcher from "../lib/fetcher"
 import AList from "../components/AList"
 import AForm from "../components/AForm"
-import * as yup from "yup"
+import Joi from "joi"
+import {validate_isbn} from "../lib/utils"
+
+import ErrorDisplay from "../components/ErrorForm"
 
 const allfields = (Submit = (data)=>console.log(data))=>{return {
   Submit : Submit,
@@ -35,13 +38,14 @@ const allfields = (Submit = (data)=>console.log(data))=>{return {
       nullable : true
     }
   ],
-  schema : yup.object({
-    title : yup.string().required("Title is required"),
-    publisher : yup.string().required("Publisher is required"),
-    author : yup.string().required("Author is required"),
-    ISBN : yup.string().required("ISBN is required"),
-    publication_date : yup.date("Publication date is a Date Type").nullable().transform((cur,origin)=> origin === "" ? null : cur),
-  })
+  schema :Joi.object({
+    title : Joi.string().trim().disallow("").exist().label("Title"),
+    publisher: Joi.string().trim().disallow("").exist().label("Publisher"),
+    author: Joi.string().trim().disallow("").exist().label("Author"),
+    ISBN: Joi.string().trim().custom(validate_isbn).disallow("").exist().label("ISBN"),
+    publication_date: Joi.date().disallow("").allow(null).optional().default(null).label("Publication Date"),
+    cover_url: Joi.string().uri().allow(null).trim().disallow("").optional().default(null).label("Cover Url")
+})
 }}
 
 const BookAdd = ()=>{
@@ -53,11 +57,7 @@ const BookAdd = ()=>{
           name:"Result :",
           body : data
         }}/>}
-        {err != null && <div className="danger-container">
-          <p className="danger">{err.message}</p>
-           { err.details && err.details.length > 0 && err.details.map((dt,index)=><p key={index} className="danger">{dt}</p>)}
-        </div>
-        }
+      <ErrorDisplay err={err} />
     </>  
 }
 export default BookAdd

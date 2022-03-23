@@ -12,6 +12,7 @@ redisData
 # production
 **/build
 CLMS.code-workspace
+mysqlData Old
 # misc
 .vscode
 .DS_Store

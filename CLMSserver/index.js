@@ -1,8 +1,8 @@
 const {HandlePromiseError,HandleApiError,HandleGenericError} = require("./errors/errorHandler")
-const {StatusCodes: http_status_codes } = require("http-status-codes")
 
 //import the winston logger
 const logger = require("./log/logger")
+
 //.env loded into process.env
 const env = require("dotenv")
 env.config()
@@ -27,13 +27,15 @@ app.use(cookieParser())
 const ROUTES = require("./lib/routes")
 const BooksController = require("./controller/Books/Books")
 const StudentsController = require("./controller/Students/Students")
+const UsersController = require("./controller/Users/Users")
+const BorrowsController = require("./controller/Borrows/Borrows")
+const TransactionsController = require("./controller/Transaction/Transactions")
 
 //Passport for authentication
 const passport = require("./lib/passportAuth")
 
 //Init sessions
 const sessions = require("./lib/sessions.js")
-const ApiError = require( "./errors/ApiError" )
 app.use(sessions)
 
 //Enable sessions managment for passport 
@@ -57,7 +59,11 @@ app.post("/protected",(req,res)=>{
 //Books Route
 app.use(ROUTES.BOOKS,BooksController)
 app.use(ROUTES.STUDENTS,StudentsController)
+app.use(ROUTES.USERS,UsersController)
+app.use(ROUTES.BORROWS,BorrowsController)
+app.use(ROUTES.TRANSACTIONS,TransactionsController)
 
+//Error Handling
 app.use((err,req,res,next)=>{
     return HandleApiError(err,req,res,next)
 })

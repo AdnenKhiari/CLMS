@@ -3,8 +3,8 @@ import * as ROUTES from "../lib/apiroutes"
 import * as Fetcher from "../lib/fetcher"
 import AList from "../components/AList"
 import AForm from "../components/AForm"
-import * as yup from "yup"
-import * as Joi from "joi"
+import Joi from "joi"
+import ErrorDisplay from "../components/ErrorForm"
 
 const allfields = (Submit = (data)=>console.log(data))=>{return {
   Submit : Submit,
@@ -47,14 +47,14 @@ const allfields = (Submit = (data)=>console.log(data))=>{return {
       type: "password"
     }
   ],
-  schema : yup.object({
-    first_name : yup.string().required("First Name is required").label("First Name"),
-    last_name : yup.string().required("Last Name is required").label("Last Name"),
-    gender : yup.string().required("Gender is required").oneOf(["M","F"]).label("Gender"),
-    address : yup.string().nullable().transform((cur,origin)=> origin === "" ? null : cur).label("Address").default(null),
-    email : yup.string().required("Email is required").email().label("Email"),
-    password : yup.string().required("Password is required").label("Password"),
-    birth_date : yup.date("Birth date is a Date Type").label("Birth Date"),
+  schema: Joi.object({
+    first_name: Joi.string().required().trim().label("First Name"),
+    last_name: Joi.string().required().trim().label("Last Name"),
+    gender: Joi.string().trim().required().valid("M","F").label("Gender"),
+    email : Joi.string().trim().required().email({tlds : false }).label("Email"),
+    password : Joi.string().min(3).required().label("Password"),
+    address : Joi.string().trim().optional().label("Address").default(null).allow(null),
+    birth_date : Joi.date().optional().label("BirthDate").default(null)
   })
 }
 }
@@ -67,11 +67,8 @@ const StudentAdd = ()=>{
           name:"Result :",
           body : data
         }}/>}
-        {err != null && <div className="danger-container">
-          <p className="danger">{err.message}</p>
-           { err.details && err.details.length > 0 && err.details.map((dt,index)=><p key={index} className="danger">{dt}</p>)}
-        </div>
-        }
+
+      <ErrorDisplay err={err} />
     </>  
 }
 export default StudentAdd

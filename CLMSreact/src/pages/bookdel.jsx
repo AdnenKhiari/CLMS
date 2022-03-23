@@ -4,7 +4,8 @@ import * as ROUTES from "../lib/apiroutes"
 import * as Fetcher from "../lib/fetcher"
 import AList from "../components/AList"
 import AForm from "../components/AForm"
-import * as yup from "yup"
+import Joi from "joi"
+import ErrorDisplay from "../components/ErrorForm"
 
 const allfields = (Submit = (data)=>console.log(data))=>{return {
   Submit : Submit,
@@ -15,9 +16,9 @@ const allfields = (Submit = (data)=>console.log(data))=>{return {
       type: "number",
     }
   ],
-  schema : yup.object({
-    ID: yup.number().positive("Should Positive number").required("Field required")
-  })
+  schema : Joi.object({
+    ID : Joi.number().positive().required().label("ID")
+})
 }
 }
 const BookDel = ()=>{
@@ -30,10 +31,8 @@ const BookDel = ()=>{
         name:"Search Results",
         body : data
       }}/>}
-          {err != null && <div className="danger-container">
-          <p className="danger">{err.message}</p>
-           { err.details && err.details.length > 0 && err.details.map((dt,index)=><p key={index} className="danger">{dt}</p>)}
-        </div>}
+      <ErrorDisplay err={err} />
+
   </>  
 }
 export default BookDel

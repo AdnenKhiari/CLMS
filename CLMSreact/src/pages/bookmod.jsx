@@ -3,7 +3,11 @@ import * as ROUTES from "../lib/apiroutes"
 import * as Fetcher from "../lib/fetcher"
 import AList from "../components/AList"
 import AForm from "../components/AForm"
-import * as yup from "yup"
+import Joi from "joi"
+ 
+import {validate_isbn} from "../lib/utils"
+import ErrorDisplay from "../components/ErrorForm"
+
 const allfields = (Submit = (data)=>console.log(data))=>{return {
   Submit : Submit,
   fields : [
@@ -49,15 +53,15 @@ const allfields = (Submit = (data)=>console.log(data))=>{return {
     }
   ],
 
-  schema : yup.object({
-    ID: yup.number().positive("Should Positive number").required("Field required").nullable().transform((cur,origin)=> origin === ""? null : cur),
-    title : yup.string().trim(),
-    publisher : yup.string().trim(),
-    author : yup.string().trim(),
-    ISBN : yup.string().trim(),
-    publication_date :yup.date("This is a date").transform(v => (v instanceof Date && !isNaN(v) ? v : null)).nullable(),
-    cover_url : yup.string().matches(/[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/,{excludeEmptyString : true,message : "Enter a valid Url"})
-  })
+  schema : Joi.object({
+    ID : Joi.number().positive().required().label("ID"),
+    title : Joi.string().trim().allow("").label("Title"),
+    publisher: Joi.string().trim().allow("").label("Publisher"),
+    author: Joi.string().trim().allow("").label("Author"),
+    ISBN: Joi.string().trim().custom(validate_isbn).allow("").label("ISBN"),
+    publication_date: Joi.date().allow("").allow(null).label("Publication Date").default(null),
+    cover_url: Joi.string().uri().trim().allow("").allow(null).label("Cover Url").default(null)
+})
 }
 }
 
@@ -71,11 +75,8 @@ const BookMod = ()=>{
           name:"Search Results",
           body : data
         }}/>}
-        {err != null && <div className="danger-container">
-          <p className="danger">{err.message}</p>
-           { err.details && err.details.length > 0 && err.details.map((dt,index)=><p key={index} className="danger">{dt}</p>)}
-        </div>
-        }
+      <ErrorDisplay err={err} />
+
     </>  
 }
 export default BookMod

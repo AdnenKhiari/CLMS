@@ -33,8 +33,8 @@ CREATE TABLE Books (
 );
 CREATE TABLE Borrows(
     ID INT PRIMARY KEY AUTO_INCREMENT,
-    book_ID INT,
-    student_ID INT ,
+    book_ID INT NOT NULL,
+    student_ID INT NOT NULL,
     date_borrowed DATE NOT NULL,
     date_return DATE,
     FOREIGN KEY (book_ID) REFERENCES Books(ID),

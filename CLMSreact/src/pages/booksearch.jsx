@@ -3,7 +3,9 @@ import * as ROUTES from "../lib/apiroutes"
 import * as Fetcher from "../lib/fetcher"
 import AList from "../components/AList"
 import AForm from "../components/AForm"
-import * as yup from "yup"
+import Joi from "joi"
+import {validate_isbn} from "../lib/utils"
+import ErrorDisplay from "../components/ErrorForm"
 
 const useIdField = (Submit = (data)=>console.log(data))=>{return {
   Submit : Submit,
@@ -12,9 +14,9 @@ const useIdField = (Submit = (data)=>console.log(data))=>{return {
     name: "ID",
     type: "number",
   }],
-  schema : yup.object({
-    ID : yup.number().positive().transform((cur,origin)=>origin === "" ? null : cur ).nullable().required(),
-  })
+  schema : Joi.object({
+    ID: Joi.number().positive("ID should be positive").required("Missing Arguments: ID")
+})
 }}
 const allfields = (Submit = (data)=>console.log(data))=>{return {
   Submit : Submit,
@@ -47,13 +49,13 @@ const allfields = (Submit = (data)=>console.log(data))=>{return {
       nullable : true
     }
   ],
-  schema : yup.object({
-    title : yup.string(),
-    publisher : yup.string(),
-    author : yup.string(),
-    ISBN : yup.string(),
-    publication_date : yup.date("This is a date").transform(v => (v instanceof Date && !isNaN(v) ? v: null)).nullable()
-  })
+  schema : Joi.object({
+    title : Joi.string().trim().allow("").exist().label("Title"),
+    publisher: Joi.string().trim().allow("").default("").exist().label("Publisher"),
+    author: Joi.string().trim().allow("").default("").exist().label("Author"),
+    ISBN: Joi.string().trim().allow("").default("").exist().label("ISBN"),
+    publication_date: Joi.date().allow("").default(null).label("Publication Date")
+})
 }
 }
 
@@ -73,17 +75,10 @@ const BookSearch = ()=>{
           name:"Search Results",
           body : data2
         }}/>}
-        {err != null && <div className="danger-container">
-          <p className="danger">{err.message}</p>
-           { err.details && err.details.length > 0 && err.details.map((dt,index)=><p key={index} className="danger">{dt}</p>)}
-        </div>
-        }
-        
-        {err2 != null && <div className="danger-container">
-          <p className="danger">{err2.message}</p>
-           { err2.details && err2.details.length > 0 && err2.details.map((dt,index)=><p key={index} className="danger">{dt}</p>)}
-        </div>
-        }
+      <ErrorDisplay err={err} />
+
+      <ErrorDisplay err={err2} />
+
         
         </>  
 }

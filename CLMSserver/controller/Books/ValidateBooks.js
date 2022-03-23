@@ -4,6 +4,7 @@ const {BookGetSchema,BookInsertSchema,BookUpdateSchema,BookRemoveSchema} = requi
 const {ValidateBookInsertConstraints} =require("./../../model/Books")
 const ApiError = require( "../../errors/ApiError" );
 const { StatusCodes } = require( "http-status-codes" );
+
 const validateGet = (req,res,next)=>{
     let schema = null
     //format data
@@ -26,6 +27,7 @@ const validateGet = (req,res,next)=>{
     return next()
 } 
 
+
 const validateRemove = (req,res,next)=>{
     req.body = format_data(req.body)
     if(Object.keys(req.body).length == 0)
@@ -35,6 +37,7 @@ const validateRemove = (req,res,next)=>{
         if(error != null){
             return next(new ApiError("Input Validation Error","Wrong Inputs",StatusCodes.BAD_REQUEST,error.details.map((el)=>el.message)))
         }
+        req.body = value
         return next()
     }
     return next(new ApiError("Missing Resources","Missing Parameters ID",StatusCodes.BAD_REQUEST))
@@ -78,6 +81,7 @@ const validateUpdate = (req,res,next)=>{
     if(error != null){
         return next(new ApiError("Input Validation Error","Wrong Inputs",StatusCodes.BAD_REQUEST,error.details.map((el)=>el.message)))
     }
+    req.body = value
     return next()
 }
 

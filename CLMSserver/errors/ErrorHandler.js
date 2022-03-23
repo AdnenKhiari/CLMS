@@ -22,6 +22,12 @@ const HandleApiError = (err,req,res)=>{
     }
 }
 
+const HandleDbConnectionError = (err)=>{
+    logError(err)
+    console.log("DB ERROR",err)
+    process.exit(-1)
+}
+
 const HandlePromiseError = (err,promise)=>{
     logError(err)
     console.log("FAILED PROMISE",promise)
@@ -52,4 +58,4 @@ const FormatApiError = (err)=>{
     } 
 }
 
-module.exports = {HandleGenericError,HandleApiError,HandlePromiseError}
+module.exports = {HandleGenericError,HandleApiError,HandlePromiseError,HandleDbConnectionError}

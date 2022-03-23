@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 
-import * as yup from "yup"
-import {yupResolver } from "@hookform/resolvers/yup"
+import  Joi from "joi"
+import {joiResolver } from "@hookform/resolvers/joi"
 import { useEffect, useState } from "react";
 //exazmple :
 const example = {
@@ -25,8 +25,8 @@ const example = {
         type: "number"
       }
     ],
-    schema : yup.object({
-      first_name : yup.string().required("Field is required")
+    schema : Joi.object({
+      first_name : Joi.string().required()
     })
   }
 /***
@@ -47,7 +47,7 @@ const AForm = ({allfields})=>{
     },[])
 
     const { register,unregister, formState: { errors }, handleSubmit ,reset } = useForm({
-      resolver : yupResolver(allfields.schema)
+      resolver : joiResolver(allfields.schema)
     });
 
     const SubmitFunction = handleSubmit((data)=>{
