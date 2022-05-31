@@ -10,8 +10,9 @@ const getUsersValidation = require("./ValidateUsers")
 const {getAllUsers,addAUser, deleteAUser, patchAUser} = require("../../model/Users")
 const { StatusCodes } = require( "http-status-codes" )
 
+const {IsAuthenticated,Authenticate,Authorised} = require("../../lib/Auth")
 
-router.get('/',getUsersValidation.ValidateGet,getUsersValidation.ValidateGetConstraints,async (req,res,next)=>{
+router.get('/',Authenticate,Authorised('C'),getUsersValidation.ValidateGet,getUsersValidation.ValidateGetConstraints,async (req,res,next)=>{
     try{
         const bd = format_data(req.query)
         console.log(bd)
@@ -23,7 +24,7 @@ router.get('/',getUsersValidation.ValidateGet,getUsersValidation.ValidateGetCons
     }
 })
 
-router.post('/',getUsersValidation.ValidateInsert,getUsersValidation.ValidateInsertConstraints,async (req,res,next)=>{
+router.post('/',Authenticate,Authorised('D'),getUsersValidation.ValidateInsert,getUsersValidation.ValidateInsertConstraints,async (req,res,next)=>{
     try{
         const bd = (req.body)
         console.log(bd)
@@ -35,7 +36,7 @@ router.post('/',getUsersValidation.ValidateInsert,getUsersValidation.ValidateIns
     }
 })
 
-router.patch('/',getUsersValidation.ValidateUpdate,getUsersValidation.ValidateUpdateConstraints,async (req,res,next)=>{
+router.patch('/',Authenticate,Authorised('D'),getUsersValidation.ValidateUpdate,getUsersValidation.ValidateUpdateConstraints,async (req,res,next)=>{
     try{
         const bd = format_data(req.body)
         console.log(bd)
@@ -47,7 +48,7 @@ router.patch('/',getUsersValidation.ValidateUpdate,getUsersValidation.ValidateUp
     }
 })
 
-router.delete('/',getUsersValidation.ValidateRemove,getUsersValidation.ValidateRemoveConstraints,async (req,res,next)=>{
+router.delete('/',Authenticate,Authorised('D'),getUsersValidation.ValidateRemove,getUsersValidation.ValidateRemoveConstraints,async (req,res,next)=>{
     try{
         const bd = format_data(req.body)
         console.log(bd)

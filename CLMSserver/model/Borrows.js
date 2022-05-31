@@ -85,23 +85,23 @@ const addABorrow = async (data)=> new Promise((resolve,reject)=>{
 const deleteABorrow = async (data)=> new Promise((resolve,reject)=>{
     const STATEMENT_OLD = "SELECT * FROM Borrows WHERE ID = ?"
     const params = [data.ID]
-    var old_data = null
     mysqlClient.query(STATEMENT_OLD,params,(error,result)=>{
         if(error)
             return reject(error)
         if(!result || result.length === 0)
             return reject(new ApiError("Resource Could not be updated","No Borrow exists with that ID",StatusCodes.INTERNAL_SERVER_ERROR,"Make sure to have a valid inputs , if the problem persists , contact the administrator"))
-        old_data = result
-    })
-    const STATEMENT = "DELETE FROM Borrows WHERE ID = ?"
-    mysqlClient.query(STATEMENT,params,(error,result)=>{
-        if(error)
-            return reject(error)
-        if(!result || result.changedRows === 0)
-            return reject(new ApiError("Resource Could not be updated","No Borrow was deleted",StatusCodes.INTERNAL_SERVER_ERROR,"Make sure to have a valid inputs , if the problem persists , contact the administrator"))
-        return resolve(format_result(old_data))
-    })
-})
+        return resolve(result)
+    })}).then((old_data)=>new Promise((resolve,reject)=>{
+        const STATEMENT = "DELETE FROM Borrows WHERE ID = ?"
+        const params = [data.ID]
+        mysqlClient.query(STATEMENT,params,(error,result)=>{
+            if(error)
+                return reject(error)
+            if(!result || result.changedRows === 0)
+                return reject(new ApiError("Resource Could not be updated","No Borrow was deleted",StatusCodes.INTERNAL_SERVER_ERROR,"Make sure to have a valid inputs , if the problem persists , contact the administrator"))
+            return resolve(format_result(old_data))
+        })
+}))
 
 const ValidateInsertBorrow = async (data) => new Promise((resolve,reject)=>{
     if(data.book_ID === "")

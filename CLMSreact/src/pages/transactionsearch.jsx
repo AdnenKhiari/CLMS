@@ -6,7 +6,12 @@ import AForm from "../components/AForm"
 import Joi from "joi"
 import ErrorDisplay from "../components/ErrorForm"
 
-const useIdField = (Submit = (data)=>console.log(data))=>{return {
+import {useCheckRole} from "../lib/utils"
+import * as PERMISSIONS from "../lib/permissions"
+import {Navigate} from "react-router-dom"
+
+
+const uIdField = (Submit = (data)=>console.log(data))=>{return {
   Submit : Submit,
   fields : [{
     label: "ID",
@@ -55,6 +60,8 @@ const TransactionSearch = ()=>{
     const {Submit,data ,error : err} = Fetcher.useFetch(ROUTES.TRANSACTIONS,Fetcher.getData)
     const {Submit : Submit2,data : data2 ,error : err2} = Fetcher.useFetch(ROUTES.TRANSACTIONS,Fetcher.getData)
     console.log("Response",data,err)
+    if(!useCheckRole(PERMISSIONS.TRANSACTION_SEARCH_PERM))
+      return <Navigate to="/home" />
     return <>
       <h2>{"Search a Transaction"}</h2>
       <AForm allfields={allfields(Submit)} />
@@ -62,7 +69,7 @@ const TransactionSearch = ()=>{
           name:"Search Results",
           body : data
         }}/>}
-      <AForm allfields={useIdField(Submit2)} />
+      <AForm allfields={uIdField(Submit2)} />
       {data2 && err2 == null && <AList data={{
           name:"Search Results",
           body : data2

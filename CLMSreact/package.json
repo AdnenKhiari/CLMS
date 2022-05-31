@@ -1,7 +1,8 @@
 {
-  "name": "app",
+  "name": "clms_react_app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "/",
   "dependencies": {
     "@hookform/resolvers": "^2.8.8",
     "@testing-library/jest-dom": "^5.16.1",
@@ -12,6 +13,7 @@
     "moment": "^2.29.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-error-boundary": "^3.1.4",
     "react-hook-form": "^7.25.1",
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",

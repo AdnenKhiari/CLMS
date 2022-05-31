@@ -3,11 +3,11 @@ const logger = require("../log/logger")
 const {HandleDbConnectionError } = require("../errors/ErrorHandler")
 //Connecting redis (for sessions storage)
 const redisClient = require("redis").createClient({
-    host : "localhost",
-    port : 6379
+    host : process.env.REDIS_HOST,
+    port : process.env.REDIS_PORT
 })
 redisClient.on("error",(err)=>HandleDbConnectionError(err))
-redisClient.on("connect",(cnt)=>HandleDbConnectionError(cnt))
+redisClient.on("connect",(cnt)=>"Cconnected to Redis ")
 
 //Connecting MYSQL 
 const mysql= require("mysql2")
@@ -19,7 +19,7 @@ const dbconnection = mysql.createPool({
     database : process.env.DB_NAME
 })
 dbconnection.on("error",(err)=>HandleDbConnectionError(err))
-dbconnection.on("connect",(cnt)=>HandleDbConnectionError(cnt))
+dbconnection.on("connect",(cnt)=>console.log("Connected to mysql"))
 
 module.exports = {
     mysqlClient : dbconnection,

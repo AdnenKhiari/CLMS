@@ -6,7 +6,12 @@ import AForm from "../components/AForm"
 import Joi from "joi"
 import ErrorDisplay from "../components/ErrorForm"
 
-const useIdField = (Submit = (data)=>console.log(data))=>{return {
+import {useCheckRole} from "../lib/utils"
+import * as PERMISSIONS from "../lib/permissions"
+import {Navigate} from "react-router-dom"
+
+
+const uIdField = (Submit = (data)=>console.log(data))=>{return {
   Submit : Submit,
   fields : [{
     label: "ID",
@@ -55,6 +60,8 @@ const allfields = (Submit = (data)=>console.log(data))=>{return {
 const BorrowSearch = ()=>{
     const {Submit,data ,error : err} = Fetcher.useFetch(ROUTES.BORROWS,Fetcher.getData)
     const {Submit : Submit2,data : data2 ,error : err2} = Fetcher.useFetch(ROUTES.BORROWS,Fetcher.getData)
+    if(!useCheckRole(PERMISSIONS.BORROW_SEARCH_PERM))
+    return <Navigate to="/home" />
     console.log("Response",data,err)
     return <>
       <h2>{"Search a Borrow"}</h2>
@@ -63,7 +70,7 @@ const BorrowSearch = ()=>{
           name:"Search Results",
           body : data
         }}/>}
-      <AForm allfields={useIdField(Submit2)} />
+      <AForm allfields={uIdField(Submit2)} />
       {data2 && err2 == null && <AList data={{
           name:"Search Results",
           body : data2

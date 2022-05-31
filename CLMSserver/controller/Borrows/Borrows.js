@@ -5,7 +5,7 @@ const getBorrowsValidation = require("./ValidateBorrows")
 const {getAllBorrows, addABorrow, deleteABorrow,patchABorrow} = require("../../model/Borrows")
 const { StatusCodes } = require( "http-status-codes" )
 
-// TODO : MAKE SURE THAT JOI SANITASIZE DATA + OVERRIDE ALL DATA AND CHECK SCHEMAS
+const {IsAuthenticated,Authenticate,Authorised} = require("../../lib/Auth")
 
 router.get('/',getBorrowsValidation.ValidateGet,getBorrowsValidation.ValidateGetConstraints,async (req,res,next)=>{
     try{
@@ -19,7 +19,7 @@ router.get('/',getBorrowsValidation.ValidateGet,getBorrowsValidation.ValidateGet
     }
 })
 
-router.post('/',getBorrowsValidation.ValidateInsert,getBorrowsValidation.ValidateInsertConstraints,async (req,res,next)=>{
+router.post('/',Authenticate,Authorised('A'),getBorrowsValidation.ValidateInsert,getBorrowsValidation.ValidateInsertConstraints,async (req,res,next)=>{
     try{
         const bd = format_data(req.body)
         console.log(bd)
@@ -31,7 +31,7 @@ router.post('/',getBorrowsValidation.ValidateInsert,getBorrowsValidation.Validat
     }
 })
 
-router.patch('/',getBorrowsValidation.ValidateUpdate,getBorrowsValidation.ValidateUpdateConstraints,async (req,res,next)=>{
+router.patch('/',Authenticate,Authorised('A'),getBorrowsValidation.ValidateUpdate,getBorrowsValidation.ValidateUpdateConstraints,async (req,res,next)=>{
     try{
         const bd = format_data(req.body)
         console.log(bd)
@@ -43,7 +43,7 @@ router.patch('/',getBorrowsValidation.ValidateUpdate,getBorrowsValidation.Valida
     }
 })
 
-router.delete('/',getBorrowsValidation.ValidateRemove,getBorrowsValidation.ValidateRemoveConstraints,async (req,res,next)=>{
+router.delete('/',Authenticate,Authorised('A'),getBorrowsValidation.ValidateRemove,getBorrowsValidation.ValidateRemoveConstraints,async (req,res,next)=>{
     try{
         const bd = format_data(req.body)
         console.log(bd)

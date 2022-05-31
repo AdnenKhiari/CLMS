@@ -7,6 +7,11 @@ import AForm from "../components/AForm"
 import Joi from "joi"
 import ErrorDisplay from "../components/ErrorForm"
 
+import {useCheckRole} from "../lib/utils"
+import * as PERMISSIONS from "../lib/permissions"
+import {Navigate} from "react-router-dom"
+
+
 const allfields = (Submit = (data)=>console.log(data))=>{return {
   Submit : Submit,
   fields : [
@@ -22,8 +27,11 @@ const allfields = (Submit = (data)=>console.log(data))=>{return {
 }
 }
 const BookDel = ()=>{
+  
   const {Submit,data ,error : err} = Fetcher.useFetch(ROUTES.BOOKS,Fetcher.deleteData)
   console.log(data,err)
+  if(!useCheckRole(PERMISSIONS.BOOK_DEL_PERM))
+  return <Navigate to="/home" />
   return <>
     <h2>{"Delete a Book"}</h2>
     <AForm allfields={allfields(Submit)} />

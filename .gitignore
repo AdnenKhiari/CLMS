@@ -8,7 +8,11 @@ mysqlData
 redisData
 # testing
 **/coverage
-
+.env
+/CLMSUi
+/CLMSredmail
+/CLMSreact
+/CLMScertbot
 # production
 **/build
 CLMS.code-workspace

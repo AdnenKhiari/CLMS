@@ -26,14 +26,16 @@ export const useFetch = (route,makeCall)=>{
   return {
       Submit,
       data,
-      error : err
+      error : err,
+      loading : !data && !err
   }
 }
 export const postData = async (route,data)=>{
   try{
     const response = await fetch(route,{
         method : "POST",
-        body: JSON.stringify(data),
+        body: data ? JSON.stringify(data) : null,
+        credentials: 'include',
         headers : {
             "Content-Type" : "application/json"
         }
@@ -57,7 +59,8 @@ export const patchData = async (route,data)=>{
       body: JSON.stringify(data),
       headers : {
           "Content-Type" : "application/json"
-      }
+      },
+      credentials: 'include',
     })
 
   
@@ -76,6 +79,7 @@ export const deleteData = async (route,data)=>{
   const response= await fetch(route,{
       method : "DELETE",
       body: JSON.stringify(data),
+      credentials: 'include',
       headers : {
           "Content-Type" : "application/json"
       }
@@ -98,7 +102,8 @@ export const getData =  async (route,data = {})=>{
     console.log("ENCODED ",URI_ENCODED)
     try{
     const response = await fetch(URI_ENCODED,{
-        method : "GET"
+        method : "GET",
+        credentials: 'include'
       })
     
         const res = await response.json()  

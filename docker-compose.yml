@@ -1,0 +1,99 @@
+version: "3.3"
+services:
+  mysqlLocal:
+    image: mysql
+    container_name: clmsmysql
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    volumes:
+      - "./mysqlData/:/var/lib/mysql"
+  redisLocal:
+    image: redis
+    container_name: clmsredis
+    ports:
+      - 6379:6379
+    volumes:
+      - "./redisData/:/var/lib/mysql"
+  clmsserver:
+    image: dbzadnen/clmsserver
+    container_name: clmsserver
+    environment:
+      - SERVER_PORT=$SERVER_PORT
+      - COOKIE_SECRET=$COOKIE_SECRET
+      - DB_HOST=$DB_HOST
+      - DB_USER=$DB_USER
+      - DB_PASSWORD=$DB_PASSWORD
+      - DB_NAME=$DB_NAME
+      - REDIS_PORT=$REDIS_PORT
+      - REDIS_HOST=$REDIS_HOST
+      - NODE_ENV=$NODE_ENV
+    depends_on: 
+      - redisLocal
+      - mysqlLocal
+    ports:
+      - 4000:4000
+  clmsnginx:
+    image: dbzadnen/clmsnginx
+    container_name: clmsnginx
+    depends_on: 
+      - clmsserver
+      - clmsui
+    volumes:
+      - "./CLMSNginx/nginxconf:/etc/nginx/conf.d"
+      - "./CLMSNginx/certslookup:/var/www/certslookup"
+      - "./CLMScertbot/etc/letsencrypt:/etc/letsencrypt"
+      - "./CLMScertbot/var/lib/letsencrypt:/var/lib/letsencrypt"
+    ports:
+      - 8085:80
+  clmsui:
+    image: dbzadnen/clmsui
+    container_name: clmsui
+    volumes:
+      - "./CLMSUi/nginxconf:/etc/nginx/conf.d"
+    ports:
+      - 8092:8082
+  clmscertbot:
+    image: certbot/certbot
+    container_name: clmscertbot
+    command: "certonly --webroot -w /var/www/certslookup -d ${DOMAINNAME} --text --agree-tos --email ${CERTBOT_EMAIL} --server https://acme-v02.api.letsencrypt.org/directory  --preferred-challenges=http"
+    environment:
+      - DOMAINNAME:$DOMAINNAME
+      - CERTBOT_EMAIL:$CERTBOT_EMAIL
+    volumes:
+      - "./CLMScertbot/etc/letsencrypt:/etc/letsencrypt"
+      - "./CLMScertbot/var/lib/letsencrypt:/var/lib/letsencrypt"
+      - "./CLMSNginx/certslookup:/var/www/certslookup"
+#  redmailsmtptest:
+#    image: iredmail/mariadb:stable
+#    container_name: clmsredmail
+#    hostname: mail.dbztestingsmtp.lel
+#    environment:
+#      - HOSTNAME=$MAIL_HOSTNAME
+#      - FIRST_MAIL_DOMAIN=$FIRST_MAIL_DOMAIN
+#      - FIRST_MAIL_DOMAIN_ADMIN_PASSWORD=$FIRST_MAIL_DOMAIN_ADMIN_PASSWORD
+#      - ROUNDCUBE_DES_KEY=$ROUNDCUBE_DES_KEY
+#      - MLMMJADMIN_API_TOKEN=$MLMMJADMIN_API_TOKEN
+#    ports:
+#      - 89:80
+#      - 443:443
+#      - 110:110
+#      - 995:995
+#      - 143:143
+#      - 993:993
+#      - 25:25
+#      - 465:465
+#      - 587:587
+#    volumes:
+#      - ./CLMSredmail/data/backup-mysql:/var/vmail/backup/mysql 
+#      - ./CLMSredmail/data/mailboxes:/var/vmail/vmail1 
+#      - ./CLMSredmail/data/mlmmj:/var/vmail/mlmmj 
+#      - ./CLMSredmail/data/mlmmj-archive:/var/vmail/mlmmj-archive 
+#      - ./CLMSredmail/data/imapsieve_copy:/var/vmail/imapsieve_copy 
+#      - ./CLMSredmail/data/custom:/opt/iredmail/custom 
+#      - ./CLMSredmail/data/ssl:/opt/iredmail/ssl 
+#      - ./CLMSredmail/data/mysql:/var/lib/mysql 
+#      - ./CLMSredmail/data/clamav:/var/lib/clamav 
+#      - ./CLMSredmail/data/sa_rules:/var/lib/spamassassin 
+#      - ./CLMSredmail/data/postfix_queue:/var/spool/postfix 
