@@ -8,7 +8,7 @@ mysqlData
 redisData
 # testing
 **/coverage
-.env
+**/.env
 /CLMSUi
 /CLMSredmail
 /CLMSreact
