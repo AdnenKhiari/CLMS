@@ -7,9 +7,12 @@ import AForm from "../components/AForm"
 import Joi from "joi"
 import ErrorDisplay from "../components/ErrorForm"
 
+import {useCheckRole} from "../lib/utils"
+import * as PERMISSIONS from "../lib/permissions"
+import {Navigate} from "react-router-dom"
 
 
-const useIdField = (Submit = (data)=>console.log(data))=>{return {
+const uIdField = (Submit = (data)=>console.log(data))=>{return {
   Submit : Submit,
   fields : [{
     label: "ID",
@@ -74,7 +77,9 @@ const allfields = (Submit = (data)=>console.log(data))=>{return {
 const StudentSearch = ()=>{
   const {Submit,data ,error : err} = Fetcher.useFetch(ROUTES.STUDENTS,Fetcher.getData)
   const {Submit : Submit2,data : data2 ,error : err2} = Fetcher.useFetch(ROUTES.STUDENTS,Fetcher.getData)
-    return <>
+  if(!useCheckRole(PERMISSIONS.STUDENT_SEARCH_PERM))
+    return <Navigate to="/home" />
+   return <>
       <h2>{"Search for a Student"}</h2>
       <AForm allfields={allfields(Submit)} />
       {data && err == null && <AList data={{
@@ -83,7 +88,7 @@ const StudentSearch = ()=>{
         }}/>}
 
 
-      <AForm allfields={useIdField(Submit2)} />
+      <AForm allfields={uIdField(Submit2)} />
       {data2 && err2 == null && <AList data={{
           name:"Search Results",
           body : data2

@@ -26,7 +26,7 @@ const getAllUsers = async (filter = {}) => new Promise((resolve,reject)=>{
         FINAL_STATEMENT = "SELECT ID,first_name,last_name,gender,email,birth_date,salary,grade,adresse FROM Users WHERE ID=?"
         params = [filter.ID]
     }
-    console.log(params,FINAL_STATEMENT)
+   // console.log(params,FINAL_STATEMENT)
     //query the db
     mysqlClient.query(FINAL_STATEMENT,params,(error,result,info)=>{
         if(error)
@@ -114,7 +114,7 @@ const patchAUser =  async (data) => new Promise((resolve,reject)=>{
                 new_data.password="Password Not Updated"
                 old_data.password="Password Not Updated"
             }
-            return resolve(format_result[old_data,new_data] )  
+            return resolve(format_result([old_data,new_data]) )  
         })
     })
 })
@@ -130,10 +130,22 @@ const ValidateInsertUser = async (data) => new Promise((resolve,reject)=>{
     })
 })
 
+const getUserByUsernamePassword = async (username,password) => new Promise((resolve,reject)=>{
+    const STATEMENT = "SELECT ID,first_name,last_name,birth_date,gender,grade,adresse,email,salary FROM Users WHERE email = ? AND password = ?"
+    mysqlClient.query(STATEMENT,[username,password],(error,result,info)=>{
+        if(error)
+            return reject(error)
+        if(!result || result.length === 0)
+            return reject(new ApiError("Resource Not Found","Invalid Credentials",StatusCodes.UNPROCESSABLE_ENTITY,"Make sure to have a valid credentials , otherwise contact the administrator"))   
+        return resolve(format_result(result)[0])
+    })
+})
+
 module.exports = {
     getAllUsers,
     addAUser,
     deleteAUser,
     patchAUser,
-    ValidateInsertUser
+    ValidateInsertUser,  
+    getUserByUsernamePassword  
 }

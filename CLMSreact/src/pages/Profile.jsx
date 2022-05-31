@@ -1,57 +1,23 @@
-import {useForm} from "react-hook-form"
-const handleData = (data)=>{
-    console.log(data)
-}
+import { useContext } from "react"
+import {UserContext} from "../contexts/UserContext"
+import {Navigate} from "react-router-dom"
+
+
 const Profile = ()=>{
-    const { register,formState: { errors }, handleSubmit } = useForm();
-    return <form action="" onSubmit={handleSubmit(handleData)} className="profileForm">
-        <div className="input_fields">
-            <label htmlFor="first_name">First Name</label>
-            <input type="text" {...register("first_name",{required : true})} />
-        </div>
-        <div className="input_fields">
-            <label htmlFor="last_name">Last Name</label>
-            <input type="text" {...register("last_name",{required : true})} />
-        </div>
-        <div className="input_fields">
-            <label htmlFor="adresse">Adresse</label>
-            <input type="text" {...register("adresse")} />
-        </div>
-        <div className="input_fields">
-            <label htmlFor="birth_date">Birth Date</label>
-            <input type="date" {...register("birth_date",{required : true})} />
-        </div>
-        <div className="input_fields">
-            <label htmlFor="email">Email</label>
-            <input type="Email" {...register("email",{required : true})} />
-        </div>
-        <div className="input_fields">
-            <label htmlFor="password">Password</label>
-            <input type="password" {...register("password",{required : true})} />
-        </div>
-        <div className="input_fields">
-            <label htmlFor="salary">salary</label>
-            <input type="number" {...register("salary",{required : true})} />
-        </div>
-        <div className="input_fields">
-            <label htmlFor="gender">Gender</label>
-            <select {...register("gender", { required: true })}>
-                <option value="M">Male</option>
-                <option value="F">Female</option>
-            </select>        
-      </div>
-      <div className="input_fields">
-            <label htmlFor="grade">Grade</label>
-            <select {...register("grade", { required: true })}>
-                <option value="A">Agent</option>
-                <option value="C">Chief</option>
-                <option value="D">Director</option>
-            </select>        
-      </div>
-          <div className="buttons">
-            <button type="submit">Submit</button>
-          </div>
-    </form>
+    const {userData} = useContext(UserContext) 
+
+    if(userData === null)
+        return <Navigate to="/login" />
+    return <>
+    <div>
+        <p>User First name : {userData.first_name}</p>
+        <p>User Last name : {userData.last_name}</p>
+        <p>User Gender : {userData.gender}</p>
+        <p>User Served Books Today :</p>
+        <p>User Address : {userData.address}</p>
+        <p>User Email  : {userData.email}</p>
+    </div>
+    </>
 }
 
 export default Profile

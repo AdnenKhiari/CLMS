@@ -8,6 +8,11 @@ import Joi from "joi"
 import {validate_isbn} from "../lib/utils"
 import ErrorDisplay from "../components/ErrorForm"
 
+import {useCheckRole} from "../lib/utils"
+import * as PERMISSIONS from "../lib/permissions"
+import {Navigate} from "react-router-dom"
+
+
 const allfields = (Submit = (data)=>console.log(data))=>{return {
   Submit : Submit,
   fields : [
@@ -68,6 +73,8 @@ const allfields = (Submit = (data)=>console.log(data))=>{return {
 const BookMod = ()=>{
     const {Submit,data ,error : err} = Fetcher.useFetch(ROUTES.BOOKS,Fetcher.patchData)
     console.log(data,err)
+    if(!useCheckRole(PERMISSIONS.BOOK_MOD_PERM))
+    return <Navigate to="/home" />
     return <>
       <h2>{"Modify a Book"}</h2>
       <AForm allfields={allfields(Submit)} />

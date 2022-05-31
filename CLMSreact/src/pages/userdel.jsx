@@ -6,6 +6,11 @@ import AForm from "../components/AForm"
 import Joi from "joi"
 import ErrorDisplay from "../components/ErrorForm"
 
+import {useCheckRole} from "../lib/utils"
+import * as PERMISSIONS from "../lib/permissions"
+import {Navigate} from "react-router-dom"
+
+
 const allfields = (Submit = (data)=>console.log(data))=>{return {
   Submit : Submit,
   fields : [
@@ -23,6 +28,8 @@ const allfields = (Submit = (data)=>console.log(data))=>{return {
 const UserDel = ()=>{
   const {Submit,data ,error : err} = Fetcher.useFetch(ROUTES.USERS,Fetcher.deleteData)
   console.log(data,err)
+  if(!useCheckRole(PERMISSIONS.USER_DEL_PERM))
+    return <Navigate to="/home" />
   return <>
     <h2>{"Delete a User"}</h2>
     <AForm allfields={allfields(Submit)} />

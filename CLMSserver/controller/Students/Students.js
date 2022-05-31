@@ -10,8 +10,9 @@ const getStudentsValidation = require("./ValidateStudents")
 const {getAllStudents,addAStudent, deleteAStudent, patchAStudent} = require("../../model/Students")
 const { StatusCodes } = require( "http-status-codes" )
 
+const {IsAuthenticated,Authenticate,Authorised} = require("../../lib/Auth")
 
-router.get('/',getStudentsValidation.ValidateGet,getStudentsValidation.ValidateGetConstraints,async (req,res,next)=>{
+router.get('/',Authenticate,Authorised('A'),getStudentsValidation.ValidateGet,getStudentsValidation.ValidateGetConstraints,async (req,res,next)=>{
     try{
         const bd = format_data(req.query)
         console.log(bd)
@@ -23,7 +24,7 @@ router.get('/',getStudentsValidation.ValidateGet,getStudentsValidation.ValidateG
     }
 })
 
-router.post('/',getStudentsValidation.ValidateInsert,getStudentsValidation.ValidateInsertConstraints,async (req,res,next)=>{
+router.post('/',Authenticate,Authorised('A'),getStudentsValidation.ValidateInsert,getStudentsValidation.ValidateInsertConstraints,async (req,res,next)=>{
     try{
         const bd = format_data(req.body)
         console.log(bd)
@@ -35,7 +36,7 @@ router.post('/',getStudentsValidation.ValidateInsert,getStudentsValidation.Valid
     }
 })
 
-router.patch('/',getStudentsValidation.ValidateUpdate,getStudentsValidation.ValidateUpdateConstraints,async (req,res,next)=>{
+router.patch('/',Authenticate,Authorised('A'),getStudentsValidation.ValidateUpdate,getStudentsValidation.ValidateUpdateConstraints,async (req,res,next)=>{
     try{
         const bd = format_data(req.body)
         console.log(bd)
@@ -47,7 +48,7 @@ router.patch('/',getStudentsValidation.ValidateUpdate,getStudentsValidation.Vali
     }
 })
 
-router.delete('/',getStudentsValidation.ValidateRemove,getStudentsValidation.ValidateRemoveConstraints,async (req,res,next)=>{
+router.delete('/',Authenticate,Authorised('A'),getStudentsValidation.ValidateRemove,getStudentsValidation.ValidateRemoveConstraints,async (req,res,next)=>{
     try{
         const bd = format_data(req.body)
         console.log(bd)

@@ -4,10 +4,14 @@ import * as Fetcher from "../lib/fetcher"
 import AList from "../components/AList"
 import AForm from "../components/AForm"
 import Joi from "joi"
-import {validate_isbn} from "../lib/utils"
 import ErrorDisplay from "../components/ErrorForm"
 
-const useIdField = (Submit = (data)=>console.log(data))=>{return {
+import {useCheckRole} from "../lib/utils"
+import * as PERMISSIONS from "../lib/permissions"
+import {Navigate} from "react-router-dom"
+
+
+const uIdField = (Submit = (data)=>console.log(data))=>{return {
   Submit : Submit,
   fields : [{
     label: "ID",
@@ -63,6 +67,8 @@ const BookSearch = ()=>{
     const {Submit,data ,error : err} = Fetcher.useFetch(ROUTES.BOOKS,Fetcher.getData)
     const {Submit : Submit2,data : data2 ,error : err2} = Fetcher.useFetch(ROUTES.BOOKS,Fetcher.getData)
     console.log("Response",data,err)
+    if(!useCheckRole(PERMISSIONS.BOOK_SEARCH_PERM))
+      return <Navigate to="/home" />
     return <>
       <h2>{"Search a Book"}</h2>
       <AForm allfields={allfields(Submit)} />
@@ -70,7 +76,7 @@ const BookSearch = ()=>{
           name:"Search Results",
           body : data
         }}/>}
-      <AForm allfields={useIdField(Submit2)} />
+      <AForm allfields={uIdField(Submit2)} />
       {data2 && err2 == null && <AList data={{
           name:"Search Results",
           body : data2
