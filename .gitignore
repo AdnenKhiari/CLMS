@@ -12,6 +12,7 @@ redisData
 /CLMSUi
 /CLMSredmail
 /CLMSreact
+/CLMScertbot
 # production
 **/build
 CLMS.code-workspace
