@@ -1,6 +1,6 @@
-# Book Borrowing Platform Overview
+# Book Borrowing Mini Project Overview
 
-This book borrowing platform is designed to streamline book management and borrowing processes, integrating various technologies, including React.js, Express.js, MySQL, Redis, Nginx, and Docker. Here's a general overview with Redis used for user sessions:
+This book borrowing Mini Project is designed to streamline book management and borrowing processes, integrating various technologies, including React.js, Express.js, MySQL, Redis, Nginx, and Docker. Here's a general overview with Redis used for user sessions:
 
 ## Key Features
 
